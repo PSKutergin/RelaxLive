@@ -5,7 +5,7 @@ const maskPhone = () => {
         let el = e.target,
             clearVal = el.dataset.phoneClear,
             pattern = el.dataset.phonePattern,
-            matrix_def = "+7(___) ___-__-__",
+            matrix_def = "+7 (___) ___-__-__",
             matrix = pattern ? pattern : matrix_def,
             i = 0,
             def = matrix.replace(/\D/g, ""),
