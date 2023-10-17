@@ -498,6 +498,7 @@ template,
     -ms-flex-align: end;
     align-items: flex-end;
     top: 0;
+    left: -2px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
