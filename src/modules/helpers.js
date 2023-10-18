@@ -18,4 +18,23 @@ const animate = ({ timing, draw, duration }) => {
     });
 }
 
-export { animate }
+const visible = (target) => {
+    const allPosition = {
+        targetPosition: {
+            top: scrollY + target.getBoundingClientRect().top,
+            left: scrollX + target.getBoundingClientRect().left,
+            right: scrollX + target.getBoundingClientRect().right,
+            bottom: scrollY + target.getBoundingClientRect().bottom
+        },
+        windowPosition: {
+            top: scrollY,
+            left: scrollX,
+            right: scrollY + document.documentElement.clientWidth,
+            bottom: scrollX + document.documentElement.clientHeight
+        }
+    }
+
+    return allPosition
+};
+
+export { animate, visible }
