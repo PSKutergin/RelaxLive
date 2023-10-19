@@ -69,14 +69,6 @@ const sliderServices = () => {
                 })
             };
 
-            // if (currentSlide >= slides.length) {
-            //     currentSlide = 0
-            // };
-
-            // if (currentSlide < 0) {
-            //     currentSlide = slides.length - 1
-            // };
-
             nextDot(dots, currentSlide, dotActiveClass);
             slider(currentSlide);
         });
