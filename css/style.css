@@ -1141,7 +1141,7 @@ template,
     content: '';
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: -1;
 }
 
 .formula-slider__slide .formula-item {
@@ -1216,6 +1216,8 @@ template,
     height: 220px;
     background: url("../images/formula/title.svg");
 }
+
+
 
 @media (max-width: 1024px) {
     .formula-title:before {
@@ -8069,6 +8071,11 @@ div.wave-block:nth-child(17):after {
 .active-item .formula-item-popup {
     visibility: visible;
     opacity: 1;
+}
+
+.coup.active-item .formula-item-popup:before {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .active-item-partners {

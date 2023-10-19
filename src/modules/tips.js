@@ -1,23 +1,30 @@
 import { animate, visible } from "./helpers";
 
 const tips = () => {
+
     const points = document.querySelectorAll('.formula-item__icon')
 
     points.forEach(point => {
-        const circle = point.querySelector('.formula-item__icon-inner')
         const tip = point.querySelector('.formula-item-popup')
 
         point.addEventListener('mouseenter', (e) => {
             const allPositionRelativeTip = visible(tip);
 
+            console.log(point.parentElement.parentElement);
+
             if (allPositionRelativeTip.targetPosition.top < allPositionRelativeTip.windowPosition.top) {
                 tip.style.top = '105px';
-                // tip.style.transform = 'rotate(180deg)';
+                tip.style.paddingTop = '40px';
+                point.classList.add('coup')
+                point.parentElement.parentElement.style.zIndex = '10'
             } else {
                 tip.style.top = '';
-                // tip.style.transform = '';
+                tip.style.paddingTop = '';
+                point.classList.remove('coup')
+                point.parentElement.parentElement.style.zIndex = ''
             };
-            tip.style.visibility = 'visible'
+
+            point.classList.add('active-item')
 
             animate({
                 duration: 300,
@@ -25,11 +32,9 @@ const tips = () => {
                     return timeFraction;
                 },
                 draw(progress) {
-                    circle.style.opacity = progress;
                     tip.style.opacity = progress;
                 }
             });
-
         })
 
         point.addEventListener('mouseleave', (e) => {
@@ -39,15 +44,17 @@ const tips = () => {
                     return timeFraction;
                 },
                 draw(progress) {
-                    circle.style.opacity = 1 - progress;
                     tip.style.opacity = 1 - progress;
                 }
             });
             setTimeout(() => {
-                tip.style.visibility = ''
-                tip.style.opacity = ''
                 tip.style.top = '';
-            }, 1000);
+                tip.style.paddingTop = '';
+            }, 300);
+
+            point.parentElement.parentElement.style.zIndex = ''
+            point.classList.remove('coup')
+            point.classList.remove('active-item')
         })
     })
 }

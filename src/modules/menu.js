@@ -3,8 +3,10 @@ const menu = () => {
     const menu = document.querySelector('.popup-dialog-menu')
 
     menuBtn.addEventListener('click', () => {
-        if (innerWidth >= 576) {
+        if (innerWidth >= 1024) {
             menu.style.right = '639px';
+        } else if (innerWidth >= 576) {
+            menu.style.right = '549px';
         } else {
             menu.style.transform = 'translate3d(0, 0, 0)';
         };

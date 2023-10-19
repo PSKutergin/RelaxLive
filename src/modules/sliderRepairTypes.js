@@ -88,7 +88,7 @@ const sliderRepairTypes = () => {
                 }
             })
 
-            console.dir(listRepair[currentType].classList.add('active'))
+            listRepair[currentType].classList.add('active')
             hideButtons();
         });
     };
