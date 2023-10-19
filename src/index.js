@@ -11,6 +11,8 @@ import modalPortfolio from "./modules/modalPortfolio";
 import sliderPortfolio from "./modules/sliderPortfolio";
 import modalDocuments from "./modules/modalDocuments";
 import sliderDocuments from "./modules/sliderDocuments";
+import sliderRepairTypes from "./modules/sliderRepairTypes";
+import sliderReviews from "./modules/sliderReviews";
 
 contacts();
 menu();
@@ -25,3 +27,5 @@ modalPortfolio();
 sliderPortfolio();
 modalDocuments();
 sliderDocuments();
+sliderRepairTypes();
+sliderReviews();
