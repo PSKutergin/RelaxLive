@@ -15,6 +15,7 @@ import sliderRepairTypes from "./modules/sliderRepairTypes";
 import sliderReviews from "./modules/sliderReviews";
 import sliderServices from "./modules/sliderServices";
 import sliderFormula from "./modules/sliderFormula";
+import accordionFaq from "./modules/accordionFaq";
 
 contacts();
 menu();
@@ -33,3 +34,4 @@ sliderRepairTypes();
 sliderReviews();
 sliderServices();
 sliderFormula();
+accordionFaq();
