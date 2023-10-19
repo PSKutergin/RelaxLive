@@ -6989,7 +6989,7 @@ div.wave-block:nth-child(17):after {
 }
 
 .dot_active .dot__inner {
-    display: block;
+    display: flex;
 }
 
 .dot__inner {
@@ -7002,6 +7002,7 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 575px) {
     .dot__inner {
+        display: flex;
         background: rgba(220, 209, 205, 0.4);
     }
 }

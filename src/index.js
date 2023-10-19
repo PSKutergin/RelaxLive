@@ -13,6 +13,7 @@ import modalDocuments from "./modules/modalDocuments";
 import sliderDocuments from "./modules/sliderDocuments";
 import sliderRepairTypes from "./modules/sliderRepairTypes";
 import sliderReviews from "./modules/sliderReviews";
+import sliderServices from "./modules/sliderServices";
 
 contacts();
 menu();
@@ -29,3 +30,4 @@ modalDocuments();
 sliderDocuments();
 sliderRepairTypes();
 sliderReviews();
+sliderServices();
