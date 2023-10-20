@@ -39,7 +39,7 @@ const loginUser = () => {
 
                             document.cookie = "user=" + JSON.stringify(user)
 
-                            location.href = '/admin/table.html';
+                            location.href = './table.html';
                         };
                     });
 
