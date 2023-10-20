@@ -6,6 +6,19 @@
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>Управление базой данных</title>
 	<link rel="stylesheet" href="styles/index.css">
+	<script>
+		function getCookie(name) {
+			let matches = document.cookie.match(new RegExp(
+				"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+			));
+			return matches ? decodeURIComponent(matches[1]) : undefined;
+		};
+
+		if (!getCookie('user')) {
+			location.href = '/admin/index.html';
+		};
+	</script>
+
 	<script src="../dist/js/admin.js" defer></script>
 
 </head>
