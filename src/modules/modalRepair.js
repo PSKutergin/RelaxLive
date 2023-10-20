@@ -124,7 +124,7 @@ const modalRepair = () => {
         }
     });
 
-    getData('/db/db.json')
+    getData('../db/db.json')
         .then(data => {
             const typesRepair = new Set()
 
