@@ -3,6 +3,7 @@ import renderData from "./renderData";
 
 const renderTable = () => {
     const selector = document.getElementById('typeItem');
+    const url = 'http://localhost:4545/repairs';
 
     const renderSelector = (types, data) => {
         types.forEach(item => {
@@ -12,20 +13,22 @@ const renderTable = () => {
                 `)
         });
 
-        selector.addEventListener('change', (e) => {
-            if (e.target.value === 'Все услуги') {
-                renderData(data)
-            } else {
-                let list = data.filter((item) => item.type === e.target.value);
-
-                renderData(list)
-            };
-        });
-
         renderData(data)
     };
 
-    getData('http://localhost:4545/repairs')
+    selector.addEventListener('change', (e) => {
+        getData(url)
+            .then(data => {
+                if (e.target.value === 'Все услуги') {
+                    renderData(data)
+                } else {
+                    let list = data.filter((item) => item.type === e.target.value);
+                    renderData(list)
+                };
+            })
+    });
+
+    getData(url)
         .then(data => {
             const typesRepair = new Set()
 

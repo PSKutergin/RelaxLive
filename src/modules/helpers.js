@@ -16,7 +16,7 @@ const animate = ({ timing, draw, duration }) => {
             requestAnimationFrame(animate);
         }
     });
-}
+};
 
 const visible = (target) => {
     const allPosition = {
@@ -37,4 +37,25 @@ const visible = (target) => {
     return allPosition
 };
 
-export { animate, visible }
+const handleInputChange = (event) => {
+    const input = event.target;
+
+    input.value !== '' ? input.style.borderColor = 'greenyellow' : input.style.borderColor = ''
+};
+
+const validationForm = (form) => {
+    const inputs = form.querySelectorAll('input')
+
+    let count = 0
+
+    inputs.forEach(input => {
+        if (input.value.trim() === '') {
+            input.style.borderColor = 'red'
+            count++
+        }
+    });
+
+    return count
+}
+
+export { animate, visible, validationForm, handleInputChange }
