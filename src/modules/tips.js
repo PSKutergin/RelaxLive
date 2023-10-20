@@ -10,8 +10,6 @@ const tips = () => {
         point.addEventListener('mouseenter', (e) => {
             const allPositionRelativeTip = visible(tip);
 
-            console.log(point.parentElement.parentElement);
-
             if (allPositionRelativeTip.targetPosition.top < allPositionRelativeTip.windowPosition.top) {
                 tip.style.top = '105px';
                 tip.style.paddingTop = '40px';
