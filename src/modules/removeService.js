@@ -2,10 +2,9 @@ import getData from "./getData";
 import sendData from "./sendData";
 import renderData from "./renderData";
 
-const removeService = () => {
+const removeService = (url) => {
     const selector = document.getElementById('typeItem')
     const tbody = document.getElementById('tbody')
-    const url = 'http://localhost:4545/repairs';
 
     let currentType
 

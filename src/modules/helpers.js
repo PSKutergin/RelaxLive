@@ -56,6 +56,16 @@ const validationForm = (form) => {
     });
 
     return count
-}
+};
 
-export { animate, visible, validationForm, handleInputChange }
+const debounce = (func, ms = 300) => {
+    let timer
+
+    return (...args) => {
+        clearTimeout(timer)
+
+        timer = setTimeout(() => { func.apply(this, args) }, ms)
+    }
+};
+
+export { animate, visible, validationForm, handleInputChange, debounce }

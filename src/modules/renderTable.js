@@ -1,15 +1,14 @@
 import getData from "./getData";
 import renderData from "./renderData";
 
-const renderTable = () => {
+const renderTable = (url) => {
     const selector = document.getElementById('typeItem');
-    const url = 'http://localhost:4545/repairs';
 
     const renderSelector = (types, data) => {
         types.forEach(item => {
             selector.insertAdjacentHTML('beforeend',
                 `
-                    <option value="${item}">${item}</option>
+                    <option value="${item}" class="select_option">${item}</option>
                 `)
         });
 

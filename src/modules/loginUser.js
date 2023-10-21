@@ -1,13 +1,12 @@
 import getData from "./getData"
 import { validationForm, handleInputChange } from "./helpers";
 
-const loginUser = () => {
+const loginUser = (url) => {
     const form = document.querySelector('form');
     const nameInput = form.querySelector('#name');
     const passwordInput = form.querySelector('#type');
     const nameTextWarning = form.querySelector('#text-warning-name');
     const passwordTextWarning = form.querySelector('#text-warning-password');
-    const url = 'http://localhost:4545/users';
 
     nameTextWarning.style.opacity = '0';
     passwordTextWarning.style.opacity = '0';
@@ -46,9 +45,6 @@ const loginUser = () => {
                     form.reset();
                 })
         }
-
-
-
     })
 
 

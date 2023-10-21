@@ -4,10 +4,14 @@ import addService from "./modules/addService";
 import editService from "./modules/editService";
 import removeService from "./modules/removeService";
 import sortService from "./modules/sortService";
+import searchService from "./modules/searchService";
 
-renderTable();
+const url = 'http://localhost:4545/repairs';
+
+renderTable(url);
 modalService();
-addService();
-editService();
-removeService();
-sortService();
+addService(url);
+editService(url);
+removeService(url);
+sortService(url);
+searchService(url);

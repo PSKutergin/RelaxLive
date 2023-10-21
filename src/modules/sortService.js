@@ -1,10 +1,9 @@
 import getData from "./getData";
 import renderData from "./renderData";
 
-const sortService = () => {
+const sortService = (url) => {
     const selector = document.getElementById('typeItem')
     const thead = document.querySelector('.table > thead');
-    const url = 'http://localhost:4545/repairs?_sort=';
 
     let currentType;
     let colName;
@@ -34,7 +33,7 @@ const sortService = () => {
             value: isSort ? 'asc' : 'desc'
         };
 
-        getData(`${url}${sortOptions.name}&_order=${sortOptions.value}`)
+        getData(`${url}?_sort=${sortOptions.name}&_order=${sortOptions.value}`)
             .then(data => {
                 currentType = selector.options[selector.selectedIndex].innerHTML
 

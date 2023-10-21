@@ -3,7 +3,7 @@ import sendData from "./sendData";
 import renderData from "./renderData";
 import { validationForm } from "./helpers";
 
-const addService = () => {
+const addService = (url) => {
     const selector = document.getElementById('typeItem')
     const modal = document.getElementById('modal');
     const form = modal.querySelector('form');
@@ -11,7 +11,6 @@ const addService = () => {
     const nameInput = form.querySelector('#name');
     const unitsInput = form.querySelector('#units');
     const costInput = form.querySelector('#cost');
-    const url = 'http://localhost:4545/repairs';
 
     let currentType
 

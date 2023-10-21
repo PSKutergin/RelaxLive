@@ -1,3 +1,5 @@
 import loginUser from "./modules/loginUser";
 
-loginUser();
+const url = 'http://localhost:4545/users';
+
+loginUser(url);

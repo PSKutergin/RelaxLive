@@ -3,7 +3,7 @@ import sendData from "./sendData";
 import renderData from "./renderData";
 import { validationForm } from "./helpers";
 
-const editService = () => {
+const editService = (url) => {
     const selector = document.getElementById('typeItem')
     const tbody = document.getElementById('tbody')
     const modal = document.getElementById('modal');
@@ -13,7 +13,6 @@ const editService = () => {
     const nameInput = form.querySelector('#name');
     const unitsInput = form.querySelector('#units');
     const costInput = form.querySelector('#cost');
-    const url = 'http://localhost:4545/repairs';
 
     let currentType
 
@@ -66,6 +65,7 @@ const editService = () => {
                             };
 
                             form.reset();
+                            form.removeAttribute('data-method')
                             form.querySelectorAll('input').forEach(input => input.style.borderColor = '');
 
                             modal.style.display = '';
