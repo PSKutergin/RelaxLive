@@ -7,16 +7,12 @@ const sliderDocuments = () => {
     const slider = (numberSlide) => {
         for (let i = 0; i < sliderBlock.children.length; i++) {
             if (i === numberSlide) {
-                sliderBlock.children[i].style.display = 'flex'
+                sliderBlock.children[i].classList.add('active')
             } else {
-                sliderBlock.children[i].style.display = 'none'
+                sliderBlock.children[i].classList.remove('active')
             };
         }
     };
-
-    if (innerWidth < 1090) {
-        slider(currentSlide);
-    }
 
     documentsBlock.addEventListener('click', (e) => {
         if (e.target.closest('.slider-arrow_right')) {

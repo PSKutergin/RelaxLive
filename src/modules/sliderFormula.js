@@ -66,8 +66,6 @@ const sliderFormula = () => {
 
             slider(currentSlide);
         });
-
-        slider(currentSlide)
     }
 
 }

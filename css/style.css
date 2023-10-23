@@ -795,6 +795,18 @@ template,
     font-size: 12px;
 }
 
+.services-slider__slide.active {
+    opacity: 1;
+    position: absolute;
+    bottom: 160px;
+}
+
+@media (max-width: 575px) {
+    .services-slider__slide:not(.active) {
+        opacity: 0;
+    }
+}
+
 .feedback {
     position: absolute;
     display: -webkit-box;
@@ -1142,6 +1154,12 @@ template,
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+@media (max-width: 864px) {
+    .formula-slider__slide:not(.formula-slider__slide:first-child) {
+        display: none;
+    }
 }
 
 .formula-slider__slide .formula-item {
@@ -1701,6 +1719,11 @@ template,
 
     .repair-types-nav__item svg {
         height: 37px;
+    }
+
+    .repair-types-nav__item:not(.active) {
+        position: absolute;
+        opacity: 0;
     }
 }
 
@@ -2438,11 +2461,13 @@ div.wave-block:nth-child(17):after {
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
+    position: relative;
 }
 
 @media (max-width: 1090px) {
     .transparency-slider.row {
         display: block;
+        height: 412px;
     }
 }
 
@@ -2524,14 +2549,32 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 1090px) {
     .transparency-item {
+        position: absolute;
+        left: calc(50% - 150px);
+        top: -2%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .transparency-item.active {
+        opacity: 1;
+    }
+
+    .transparency-item:not(.active) {
+        opacity: 0;
     }
 }
 
 @media (max-width: 1024px) {
     .transparency-item {
         width: auto;
+        left: calc(50% - 225px);
+    }
+}
+
+@media (max-width: 575px) {
+    .transparency-item {
+        left: calc(50% - 133px);
     }
 }
 
@@ -5222,6 +5265,11 @@ div.wave-block:nth-child(17):after {
         padding-left: 0;
         text-align: center;
         margin-top: 0;
+        position: absolute;
+    }
+
+    .popup-repair-types-nav__item:not(.active) {
+        opacity: 0;
     }
 }
 
@@ -7231,13 +7279,16 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 1024px) {
     .nav-list-repair {
-        min-width: 1200px;
+        max-width: 710px;
+        min-width: 225px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         max-width: 100%;
+        justify-content: center;
+        position: relative;
     }
 }
 
@@ -7255,21 +7306,24 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 1024px) {
     .nav-list-popup-repair {
-        min-width: 3130px;
+        min-width: 225px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        justify-content: center;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         max-width: 100%;
+        position: relative;
+        height: 37px;
     }
 }
 
-@media (max-width: 575px) {
+/* @media (max-width: 575px) {
     .nav-list-popup-repair {
         min-width: 2840px;
     }
-}
+} */
 
 @media (max-width: 575px) {
     .nav-list-designs {
@@ -7694,6 +7748,13 @@ div.wave-block:nth-child(17):after {
     width: 302px;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+
+    .nav-list-popup-repair .button_o {
+        position: absolute;
+    }
 }
 
 @media (max-width: 575px) {
@@ -9015,4 +9076,50 @@ strong {
 
 .slider-dots {
     display: none;
+}
+
+.slider-dots-main {
+    display: none;
+}
+
+@media (max-width: 575px) {
+    .slider-dots-main {
+        position: absolute;
+        display: flex;
+        top: 200px;
+    }
+}
+
+.slider-arrow_left-services,
+.slider-arrow_right-services {
+    display: none;
+}
+
+.services .row.active {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+
+    .services .row:not(.active) {
+        display: none;
+    }
+
+    .slider-arrow_left-services,
+    .slider-arrow_right-services {
+        display: flex;
+        top: 57%;
+    }
+
+    .slider-arrow_left-services {
+        left: -60px;
+    }
+}
+
+@media (max-width: 575px) {
+
+    .slider-arrow_left-services,
+    .slider-arrow_right-services {
+        display: none;
+    }
 }

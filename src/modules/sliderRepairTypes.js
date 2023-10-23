@@ -1,6 +1,7 @@
 const sliderRepairTypes = () => {
     const repairTypesBlock = document.getElementById('repair-types')
     const imagesBlock = repairTypesBlock.querySelector('.repair-types-slider')
+    const blockRepair = repairTypesBlock.querySelector('.nav-list-repair')
     const listRepair = repairTypesBlock.querySelectorAll('.repair-types-nav__item')
     const currentSlideText = repairTypesBlock.querySelector('.slider-counter-content__current')
     const totalSlideText = repairTypesBlock.querySelector('.slider-counter-content__total')
@@ -43,57 +44,36 @@ const sliderRepairTypes = () => {
         }
     };
 
-    const hideButtons = () => {
-        listRepair.forEach((item) => {
-            if (!item.classList.contains('active')) {
-                item.style.display = 'none'
-            } else {
-                item.style.display = ''
+    repairTypesBlock.addEventListener('click', (e) => {
+        listRepair.forEach((item, index) => {
+            if (item.classList.contains('active')) {
+                item.classList.remove('active')
+
+                if (e.target.closest('.nav-arrow_right')) {
+                    currentType = index === listRepair.length - 1 ? 0 : index + 1;
+                    changeSliderBlock(currentType);
+                } else if (e.target.closest('.nav-arrow_left')) {
+                    currentType = index === 0 ? listRepair.length - 1 : index - 1;
+                    changeSliderBlock(currentType);
+                }
             }
         })
-    }
 
-    if (innerWidth >= 1025) {
-        listRepair.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                listRepair.forEach((type, key) => {
-                    if (index === key) {
-                        type.classList.add('active')
-                    } else {
-                        type.classList.remove('active')
-                    };
-                });
-
-                changeSliderBlock(index)
-            })
-        })
-    } else {
-        repairTypesBlock.querySelector('.nav-list-repair').style.minWidth = '225px';
-        repairTypesBlock.querySelector('.nav-list-repair').style.maxWidth = '710px';
-        repairTypesBlock.querySelector('.nav-list-repair').style.justifyContent = 'center';
-        hideButtons();
-
-        repairTypesBlock.addEventListener('click', (e) => {
-            listRepair.forEach((item, index) => {
-                if (item.classList.contains('active')) {
-                    item.classList.remove('active')
-
-                    if (e.target.closest('.nav-arrow_right')) {
-                        currentType = index === listRepair.length - 1 ? 0 : index + 1;
-                        changeSliderBlock(currentType);
-                    } else if (e.target.closest('.nav-arrow_left')) {
-                        currentType = index === 0 ? listRepair.length - 1 : index - 1;
-                        changeSliderBlock(currentType);
-                    }
-                }
-            })
-
-            listRepair[currentType].classList.add('active')
-            hideButtons();
-        });
-    };
+        listRepair[currentType].classList.add('active')
+    });
 
     repairTypesBlock.addEventListener('click', (e) => {
+        if (e.target.closest('.repair-types-nav__item')) {
+            for (let i = 0; i < blockRepair.children.length; i++) {
+                if (blockRepair.children[i].innerText === e.target.innerText) {
+                    blockRepair.children[i].classList.add('active');
+                    changeSliderBlock(i)
+                } else {
+                    blockRepair.children[i].classList.remove('active')
+                };
+            }
+        }
+
         if (e.target.closest('.slider-arrow_right')) {
             currentSlide = +currentSlideText.innerHTML === activeSliderBlock.children.length ? 0 : +currentSlideText.innerHTML
             slider(activeSliderBlock, currentSlide);

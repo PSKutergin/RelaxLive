@@ -7,7 +7,7 @@ const modalRepair = () => {
 
     let selectorItems = [];
     let dataRepair = [];
-    let currentTypeIndex = 0
+    let currentTypeIndex = 0;
 
     const renderSelector = (types, data) => {
         selector.innerHTML = ''
@@ -28,14 +28,6 @@ const modalRepair = () => {
         });
 
         selectorItems = modal.querySelectorAll('.popup-repair-types-nav__item')
-
-        if (innerWidth < 1025) {
-            selector.style.minWidth = '225px';
-            selector.style.maxWidth = '710px';
-            selector.style.justifyContent = 'center';
-
-            hideButtons(selectorItems);
-        };
 
         renderData(typesRepair[currentTypeIndex], data)
     };
@@ -65,27 +57,16 @@ const modalRepair = () => {
         })
     };
 
-    const hideButtons = (elems) => {
-        elems.forEach((item) => {
-            if (!item.classList.contains('active')) {
-                item.style.display = 'none'
-            } else {
-                item.style.display = ''
-            }
-        })
-    };
-
     bobyHTML.addEventListener('click', (e) => {
         if (e.target.nodeName === 'A' && e.target.innerText.trim() === "Полный список услуг и цен") {
             modal.style.visibility = 'visible';
         }
-
     });
 
     modal.addEventListener('click', (e) => {
         if (e.target.closest('.close')) {
             modal.style.visibility = '';
-        }
+        };
 
         if (e.target.closest('.popup-repair-types-nav__item')) {
             selectorItems.forEach((item) => {
@@ -97,7 +78,7 @@ const modalRepair = () => {
                     item.classList.remove('active')
                 };
             })
-        }
+        };
 
         if (innerWidth < 1025) {
             selectorItems.forEach((item, index) => {
@@ -120,7 +101,6 @@ const modalRepair = () => {
 
             renderData(selectorItems[currentTypeIndex].innerHTML, dataRepair)
             selectorItems[currentTypeIndex].classList.add('active');
-            hideButtons(selectorItems);
         }
     });
 

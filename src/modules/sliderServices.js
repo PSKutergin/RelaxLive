@@ -1,64 +1,34 @@
 const sliderServices = () => {
-    if (innerWidth < 576) {
-        const sliderBlock = document.querySelector('.services-slider');
-        const slides = sliderBlock.querySelectorAll('.services-item')
-        const dotBlock = document.createElement('div')
+    const servicesBlock = document.querySelector('.services');
+    const servicesSlides = servicesBlock.querySelectorAll('.row')
+    const sliderBlock = document.querySelector('.services-slider');
+    const slides = sliderBlock.querySelectorAll('.services-item');
+    const dotBlock = document.querySelector('.slider-dots-main');
+    const dots = dotBlock.querySelectorAll('.dot-main');
 
+    const slider = (numberSlide, slides) => {
+        slides.forEach((slide, index) => {
+            if (index === numberSlide) {
+                slide.classList.add('active')
+            } else {
+                slide.classList.remove('active')
+            };
+        })
+    };
+
+    const prevDot = (elems, index, strClass) => {
+        elems[index].classList.remove(strClass)
+    };
+
+    const nextDot = (elems, index, strClass) => {
+        elems[index].classList.add(strClass)
+    };
+
+    if (innerWidth < 576) {
         let currentSlide = 0;
         let dotActiveClass = 'dot_active';
 
-        const slider = (numberSlide) => {
-            slides.forEach((slide, index) => {
-                if (index === numberSlide) {
-                    slide.style.display = 'flex'
-                } else {
-                    slide.style.display = 'none'
-                };
-            })
-        };
-
-        const prevDot = (elems, index, strClass) => {
-            elems[index].classList.remove(strClass)
-        };
-
-        const nextDot = (elems, index, strClass) => {
-            elems[index].classList.add(strClass)
-        };
-
-        sliderBlock.style.display = 'flex';
-        sliderBlock.style.justifyContent = 'center';
-
-        dotBlock.className = "slider-dots slider-dots-main"
-        dotBlock.style.display = 'flex'
-        dotBlock.style.position = 'absolut'
-        dotBlock.style.top = '200px'
-
-        for (let i = 0; i < sliderBlock.children.length; i++) {
-            if (i === 0) {
-                dotBlock.insertAdjacentHTML('beforeend',
-                    `
-                    <div class="dot dot-main switch dot_active">
-                        <div class="dot__inner"></div>
-                    </div>
-                    `)
-            } else {
-                dotBlock.insertAdjacentHTML('beforeend',
-                    `
-                    <div class="dot dot-main switch">
-                        <div class="dot__inner"></div>
-                    </div>
-                    `)
-            };
-        }
-
-        sliderBlock.insertAdjacentElement('afterend', dotBlock)
-
-        const dots = dotBlock.querySelectorAll('.dot-main')
-        console.log(dots);
-
         dotBlock.addEventListener('click', (e) => {
-            // e.preventDefault();
-
             prevDot(dots, currentSlide, dotActiveClass);
 
             if (e.target.classList.contains('dot-main')) {
@@ -70,10 +40,26 @@ const sliderServices = () => {
             };
 
             nextDot(dots, currentSlide, dotActiveClass);
-            slider(currentSlide);
+            slider(currentSlide, slides);
         });
+    } else {
+        let currentSlide = 0
 
-        slider(currentSlide);
+        servicesBlock.addEventListener('click', (e) => {
+            if (e.target.closest('.slider-arrow_right-services')) {
+                currentSlide--
+            } else if (e.target.closest('.slider-arrow_left-services')) {
+                currentSlide++
+            };
+
+            if (currentSlide === servicesSlides.length) {
+                currentSlide = 0
+            } else if (currentSlide < 0) {
+                currentSlide = servicesSlides.length - 1
+            }
+
+            slider(currentSlide, servicesSlides);
+        });
     }
 
 
